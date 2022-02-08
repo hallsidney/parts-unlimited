@@ -1,4 +1,4 @@
-package org.asi.partsunlimited;
+package org.asi.partsunlimited.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

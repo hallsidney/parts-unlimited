@@ -1,6 +1,6 @@
 package org.asi.partsunlimited.service;
 
-import org.asi.partsunlimited.Product;
+import org.asi.partsunlimited.models.Product;
 import org.asi.partsunlimited.repositories.ProductRepository;
 import org.asi.partsunlimited.services.ProductService;
 import org.junit.jupiter.api.BeforeEach;

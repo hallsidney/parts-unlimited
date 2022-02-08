@@ -1,12 +1,11 @@
 package org.asi.partsunlimited.controllers;
 
-import org.asi.partsunlimited.Product;
+import org.asi.partsunlimited.models.Product;
 import org.asi.partsunlimited.services.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.net.URI;
 import java.util.List;
 

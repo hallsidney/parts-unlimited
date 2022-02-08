@@ -1,7 +1,7 @@
 package org.asi.partsunlimited.services;
 
 import lombok.AllArgsConstructor;
-import org.asi.partsunlimited.Product;
+import org.asi.partsunlimited.models.Product;
 import org.asi.partsunlimited.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
