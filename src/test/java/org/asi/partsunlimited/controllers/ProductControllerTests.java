@@ -16,6 +16,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -52,5 +53,17 @@ class ProductControllerTests {
                 .andExpect(jsonPath("$[1].quantity").value("1"));
 
         verify(productService).getProducts();
+    }
+
+    @Test
+    void shouldUpdateProductWhenInventoryIsChanged() throws Exception {
+        when(productService.updateProduct(1L, 10)).thenReturn(Product.builder().name("first-product").quantity(10).build());
+
+        this.mockMvc.perform(patch("/products/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("10"))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$.name").value("first-product"));
+        verify(productService).updateProduct(1L, 10);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.net.URI;
 import java.util.List;
 
@@ -29,6 +30,15 @@ public class ProductController {
         URI location = createResourceLocation("/products",savedProduct.getId());
         return ResponseEntity.created(location).body(savedProduct);
     }
+
+    @PatchMapping("/products/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable String id, @RequestBody String number) {
+        var updatedProduct = productService.updateProduct(Long.parseLong(id), Integer.parseInt(number));
+        URI location = createResourceLocation("/products", updatedProduct.getId());
+        return ResponseEntity.created(location).body(updatedProduct);
+    }
+
+
 
     private URI createResourceLocation(String path, Long resourceId) {
         return ServletUriComponentsBuilder.fromCurrentRequestUri().port("8080").path(path)

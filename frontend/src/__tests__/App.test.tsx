@@ -49,4 +49,10 @@ describe("inventory", () => {
       expect(await screen.findByText("shiny new product")).toBeInTheDocument();
     });
   });
+
+  describe("When I increase the inventory of a product", () => {
+    it("Should display the new inventory", () => {
+
+    })
+  })
 });

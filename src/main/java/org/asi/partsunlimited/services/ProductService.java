@@ -20,4 +20,10 @@ public class ProductService {
     public List<Product> getProducts() {
         return productRepository.findAll();
     }
+
+    public Product updateProduct(Long productId, Integer inventory) {
+        Product holder = productRepository.getById(productId);
+        holder.setQuantity(holder.getQuantity() + inventory);
+        return productRepository.save(holder);
+    }
 }

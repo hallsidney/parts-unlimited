@@ -29,7 +29,16 @@ const App = () => {
                 <Box>
                     <h2>Product</h2>
                     {products.map((product, index) => (
-                        <div key={index}>{product.name}</div>
+                        <div key={index}>
+                            {product.name}
+                            <form>
+                                <label>
+                                    Quantity to add
+                                    <input name="quantity" type="text" onChange={setQuantity}/>
+                                </label>
+                                <button>Add</button>
+                            </form>
+                        </div>
                     ))}
                     <form onSubmit={submitForm}>
                         <br/>
