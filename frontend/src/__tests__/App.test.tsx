@@ -1,5 +1,5 @@
 import React from "react";
-import {render, screen} from "@testing-library/react";
+import {render, screen, waitFor} from "@testing-library/react";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
 import {createProduct, getProducts} from "../productsApiClient";
@@ -15,44 +15,14 @@ const addProduct = (product: string) => {
 }
 
 describe("inventory", () => {
-  describe("when I view the inventory", () => {
-    it("should display the products", async () => {
-      mockGetProducts.mockResolvedValue([{name: "a product", quantity: 0}]);
+  describe("when I render the inventory", () => {
+    it("the getProducts api should be called", async () => {
+      mockGetProducts.mockResolvedValue([{id:1, name: "Lemonade", quantity:0 }])
 
       render(<App/>);
 
-      expect(screen.getByText("Parts Unlimited Inventory")).toBeInTheDocument();
-      expect(screen.getByText("Product")).toBeInTheDocument();
-      expect(await screen.findByText("a product")).toBeInTheDocument();
-    });
+      await waitFor(() => expect(mockGetProducts).toHaveBeenCalledTimes(1))
 
-    it("should display the products' quantities", async () => {
-      mockGetProducts.mockResolvedValue([{name: "a product", quantity: 0}]);
-
-      render(<App/>);
-
-      expect(screen.getByText("Quantity")).toBeInTheDocument();
-      expect(await screen.findByText("0")).toBeInTheDocument();
     });
   });
-
-  describe("when I add a new product", () => {
-    it("should display the new product", async () => {
-      mockCreateProduct.mockResolvedValueOnce({name: "shiny new product", quantity: 0});
-      mockGetProducts.mockResolvedValueOnce([]);
-      mockGetProducts.mockResolvedValueOnce([{name: "shiny new product", quantity: 0}]);
-
-      render(<App/>);
-      addProduct("shiny new product");
-
-      expect(mockCreateProduct).toHaveBeenCalledWith("shiny new product");
-      expect(await screen.findByText("shiny new product")).toBeInTheDocument();
-    });
-  });
-
-  describe("When I increase the inventory of a product", () => {
-    it("Should display the new inventory", () => {
-
-    })
-  })
 });

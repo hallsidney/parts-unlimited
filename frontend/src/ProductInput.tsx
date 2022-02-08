@@ -11,7 +11,7 @@ export const ProductInput = ({refreshPage}: Props) => {
     const submitForm = (event: FormEvent) => {
         event.preventDefault();
         createProduct(productName).then(() => {
-            refreshPage;
+            refreshPage();
         });
     }
 
