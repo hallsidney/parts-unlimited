@@ -20,7 +20,7 @@ export const ProductCard = ({product, refresh}: ProductCardProps) => {
     }
 
     return (
-        <Grid container>
+        <Grid item container>
             <Grid item xs={4}>
                 {product.name}
             </Grid>
