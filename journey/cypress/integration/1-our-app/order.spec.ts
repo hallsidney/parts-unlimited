@@ -1,7 +1,7 @@
 
 function clickDropdown(productName:string) {
     cy.findByLabelText("order").findByTestId('KeyboardArrowDownIcon').click();
-    cy.findByRole('option', {name:productName})
+    cy.findByRole('option', {name:productName}).click()
 }
 
 function orderProduct(productName:string, quantity:string){

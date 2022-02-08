@@ -1,9 +1,8 @@
 import {render, screen} from "@testing-library/react";
-import {ProductCard} from "../ProductCard";
-import App from "../App";
+import {ProductCard} from "../product/ProductCard";
 import React from "react";
-import {getProducts, updateProduct} from "../productsApiClient";
-jest.mock("../productsApiClient")
+import {updateProduct} from "../clients/productsApiClient";
+jest.mock("../clients/productsApiClient")
 import userEvent from "@testing-library/user-event";
 
 const mockUpdateProduct = updateProduct as jest.MockedFunction<typeof updateProduct>

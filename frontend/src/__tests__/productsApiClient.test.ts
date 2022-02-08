@@ -1,5 +1,5 @@
 import nock from 'nock';
-import {createProduct, getProducts, updateProduct} from "../productsApiClient";
+import {createProduct, getProducts, updateProduct} from "../clients/productsApiClient";
 
 describe('productsApiClient', () => {
     describe('getProducts', () => {
