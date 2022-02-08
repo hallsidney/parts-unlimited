@@ -1,7 +1,7 @@
 import {Product} from "./product";
 import {Box, Grid} from "@mui/material";
 import React, {FormEvent, useState} from "react";
-import {updateProduct} from "./productsApiClient";
+import {updateProduct} from "../clients/productsApiClient";
 
 type ProductCardProps = {
     product: Product

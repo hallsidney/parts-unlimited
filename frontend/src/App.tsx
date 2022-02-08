@@ -1,9 +1,9 @@
 import React, {FormEvent, useEffect, useState} from "react";
 import {createProduct, getProducts} from "./productsApiClient";
 import {Box, Container} from "@mui/material";
-import {Product} from "./product";
-import {ProductDisplay} from "./ProductDisplay";
-import {ProductInput} from "./ProductInput";
+import {Product} from "./product/product";
+import {ProductDisplay} from "./product/ProductDisplay";
+import {ProductInput} from "./product/ProductInput";
 
 const App = () => {
     const [products, setProducts] = useState<Product[]>([]);

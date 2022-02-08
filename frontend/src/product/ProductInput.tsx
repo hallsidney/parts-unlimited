@@ -1,5 +1,5 @@
 import React, {FormEvent, useState} from "react";
-import {createProduct, getProducts} from "./productsApiClient";
+import {createProduct, getProducts} from "../clients/productsApiClient";
 
 type Props = {
     refreshPage: () => void;
