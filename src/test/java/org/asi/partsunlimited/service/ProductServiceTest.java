@@ -32,9 +32,7 @@ class ProductServiceTest {
     void shouldRetrieveAllProducts(){
         List<Product> expectedProducts = List.of(new Product(1L, "first-product", 0), new Product(2L, "second-product", 0));
         when(productRepository.findAll()).thenReturn(expectedProducts);
-
         List<Product> actualProducts = productService.getProducts();
-
         assertThat(actualProducts).isEqualTo(expectedProducts);
     }
 

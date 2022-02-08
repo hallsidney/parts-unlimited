@@ -2,15 +2,13 @@ package org.asi.partsunlimited.controllers;
 
 import org.asi.partsunlimited.models.Order;
 import org.asi.partsunlimited.services.OrderService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
@@ -24,6 +22,11 @@ public class OrderController {
         var savedOrder = orderService.addOrder(order);
         URI location = createResourceLocation("/orders", savedOrder.getId());
         return ResponseEntity.created(location).body(savedOrder);
+    }
+
+    @GetMapping
+    List<Order> getOrders(){
+        return orderService.getOrders();
     }
 
     private URI createResourceLocation(String path, Long resourceId) {
